@@ -1,0 +1,15 @@
+*.o
+bail_out
+cmp_ok
+diag
+done_testing
+is
+isnt
+like
+Makefile
+note
+ok
+plan
+skip_all
+todo
+unlike
