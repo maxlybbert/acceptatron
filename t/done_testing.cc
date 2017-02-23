@@ -31,10 +31,10 @@ int main(int argc, char* argv[])
 	for (size_t i = 0; i < tests; ++i) {
 		if (failures) {
 			--failures;
-			fail(std::to_string(i));
+			fail(APPEND_LOC(std::to_string(i)));
 			continue;
 		}
-		pass(std::to_string(i));
+		pass(APPEND_LOC(std::to_string(i)));
 	}
 	done_testing(tests);
 	return 0;
