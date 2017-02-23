@@ -629,8 +629,8 @@ namespace impl {
 		std::cout << '\n';
 	}
 
-	std::string append_location(std::string msg, const char* filename,
-			int line)
+	inline std::string append_location(std::string msg,
+			const char* filename, int line)
 	{
 		return msg.append(" ")
 			.append(filename)
