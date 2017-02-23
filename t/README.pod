@@ -6,8 +6,8 @@
 
 The F<Acceptatron> module provides support for the library's tests.  At this
 point, it only provides a slurping function.  I know that CPAN modules exist
-for this.  But the Acceptatron should be usable with a standard Perl
-distribution; including the older distributions that some vendors insist on
+for this; but the Acceptatron should be usable with a standard Perl
+distribution, including the older distributions that some vendors insist on
 shipping on their platforms.
 
 =head1 F<getopt.h>
@@ -15,12 +15,13 @@ shipping on their platforms.
 The F<getopt.h> file exists mainly so that the tests can be compiled and run
 on Windows.  C<getopt> is a POSIX function accesible by C<#includ>ing
 F<unistd.h>.  It appears that GCC actually declares C<getopt> in the file
-F<getopt.h>.  If the this project's F<getopt.h> is C<#include>d in angle
+F<getopt.h>.  If this project's F<getopt.h> is C<#include>d in angle
 brackets -- and I'm aware of one coding standard that requires all C<#include>
 lines use angle brackets -- then the C<<< #include E<lt>getopt.hE<gt> >>> line
 in F<unistd.h> will attempt to C<#include> the wrong F<getopt.h>.  I have
-fixed this by using C<#include "getopt.h">.  If that is too subtle, you
-could rename the file to something like F<acceptatron_getopt.h>.
+fixed this by using C<#include "getopt.h"> to refer to the local F<getopt.h>.
+If that is too subtle, you could rename the file to something like
+F<acceptatron_getopt.h>.
 
 The Acceptatron library itself doesn't use C<getopt>.  It's only used by the
 tests.
@@ -35,8 +36,8 @@ F<Test::More>.
 
 =head1 Perl
 
-It seems like a safe bet that programmers interested in using TAP testing
-frameworks already have some version of Perl and associated programs (e.g.,
+It seems like a safe bet that programmers interested in using a TAP testing
+framework already have some version of Perl and associated programs (e.g.,
 F<perldoc> and F<prove>).  Unfortunately, it's hard to determine which version
 of Perl they would have.  F<Acceptatron.pm> and F<Makefile.PL> should work
 with Perl 5.6 or later.  If not, it's a bug, and I would appreciate a bug
@@ -54,11 +55,11 @@ failed tests.
 =head1 F<Makefile.PL>
 
 F<Makefile.PL> can be used to write a simple makefile for the tests only.
-The acceptatron is a single-header library and does not need a makefile.
-Both F<Makefile.PL> and the generated F<Makefile> should work on Windows.
-Unfortunately, I don't have access to a Windows computer.  If F<Makefile.PL>
-doesn't run on Windows, or the generated makefile doesn't work, please
-report it as a bug.
+The Acceptatron library is a single-header library and does not need a
+makefile.  Both F<Makefile.PL> and the generated F<Makefile> should work on
+Windows.  Unfortunately, I don't have access to a Windows computer.  If
+F<Makefile.PL> doesn't run on Windows, or the generated makefile doesn't work,
+please report it as a bug.
 
 F<Makefile.PL> will choose the first compiler it detects, from the list
 F<c++>, F<cl> (Visual Studio), F<clang++>, and F<g++>.  I am willing to

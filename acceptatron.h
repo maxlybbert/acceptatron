@@ -189,6 +189,9 @@ C<'foo'>.  Calls C<dtoa> for C<float>, C<double> or C<long double> values.
 
 	void do_test_output(bool pred, const std::string& msg,
 			const std::string& failure);
+
+	std::string append_location(std::string msg, const char* filename,
+			int line);
 }
 using impl::tap_format;
 using impl::do_test_output;
@@ -625,8 +628,29 @@ namespace impl {
 		}
 		std::cout << '\n';
 	}
+
+	std::string append_location(std::string msg, const char* filename,
+			int line)
+	{
+		return msg.append(" ")
+			.append(filename)
+			.append(":")
+			.append(std::to_string(line));
+	}
 }
 }
+/*
+
+
+=item B<<< C<APPEND_LOC(msg)> >>>
+
+Macro to append the values of C<__FILE__> and C<__LINE__> to a copy of C<msg>.
+
+=cut
+
+*/
+#define APPEND_LOC(msg) \
+	acceptatron::impl::append_location(msg, __FILE__, __LINE__)
 
 /*
 
