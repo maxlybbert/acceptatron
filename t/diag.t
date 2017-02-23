@@ -6,15 +6,15 @@ use File::Spec::Functions;
 use FindBin '$Bin';
 use Test::More;
 
-for (0..10) {
+for (0..3) {
 	open my $OUT, '-|', catfile($FindBin::Bin, "diag$Config{_exe}"),
-		"hello $_";
+		qq{"hello $_"};
 	if (!defined($OUT)) {
 		fail('unable to fork child process');
 		done_testing();
 	}
 	
-	like <$OUT>, qr{^\s*\#\s*hello $_$}, 'diagnostic written';
+	like <$OUT>, qr{^\s*\#\s*"hello $_".*$}, 'diagnostic written';
 }
 done_testing();
 
