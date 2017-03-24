@@ -21,7 +21,7 @@ sub find_compiler {
 sub compiler_flags {
 	my $compiler = shift;
 	if ($compiler eq 'cl') {
-		return qw{/I..};
+		return qw{/I.. /EHsc setargv.obj};
 	}
 	return qw{-std=c++11 -I..};
 }
