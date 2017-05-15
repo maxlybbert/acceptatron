@@ -424,7 +424,7 @@ inline void done_testing(size_t count)
 	if (!impl::plan_output) {
 		std::cout << "1.." << (count ? count : impl::tests) << '\n';
 	}
-	if (impl::planned_tests != impl::tests) {
+	if (impl::planned_tests && impl::planned_tests != impl::tests) {
 		std::exit(255);
 	}
 	std::exit(std::min<int>(254, impl::failures));
