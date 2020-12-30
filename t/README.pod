@@ -10,6 +10,10 @@ for this; but the Acceptatron should be usable with a standard Perl
 distribution, including the older distributions that some vendors insist on
 shipping on their platforms.
 
+If you get errors about needing to install F<Acceptatron.pm> when you run the
+tests, try setting the PERL5LIB environment variable to include the current
+directory.
+
 =head1 F<getopt.h>
 
 The F<getopt.h> file exists mainly so that the tests can be compiled and run
